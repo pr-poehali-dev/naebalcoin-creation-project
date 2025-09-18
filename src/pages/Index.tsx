@@ -10,6 +10,8 @@ const Index = () => {
   const [miningProgress, setMiningProgress] = useState(0);
   const [balance, setBalance] = useState(0);
   const [earnings, setEarnings] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showTroll, setShowTroll] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -30,6 +32,16 @@ const Index = () => {
     if (!isConnected) {
       setMiningProgress(0);
     }
+  };
+
+  const handleGetMoney = () => {
+    setIsLoading(true);
+    setShowTroll(false);
+    
+    setTimeout(() => {
+      setIsLoading(false);
+      setShowTroll(true);
+    }, 10000);
   };
 
   return (
@@ -214,9 +226,22 @@ const Index = () => {
                     <Icon name="Send" className="mr-2" size={16} />
                     Отправить
                   </Button>
-                  <Button className="flex-1 bg-neon-magenta hover:bg-neon-magenta/80">
-                    <Icon name="Download" className="mr-2" size={16} />
-                    Получить
+                  <Button 
+                    className="flex-1 bg-neon-magenta hover:bg-neon-magenta/80"
+                    onClick={handleGetMoney}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <>
+                        <Icon name="Loader2" className="mr-2 animate-spin" size={16} />
+                        Загрузка денег...
+                      </>
+                    ) : (
+                      <>
+                        <Icon name="Download" className="mr-2" size={16} />
+                        Получить
+                      </>
+                    )}
                   </Button>
                 </div>
               </CardContent>
@@ -258,6 +283,43 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Troll Modal */}
+      {showTroll && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-gradient-to-br from-red-900 to-red-700 rounded-lg p-8 max-w-2xl mx-auto border-4 border-red-500 animate-bounce">
+            <div className="text-center">
+              <div className="text-6xl mb-4">😈</div>
+              <h2 className="text-3xl font-bold text-red-100 mb-6">
+                ТРОЛЛИНГ ОТ ВЛАДА! 🤣
+              </h2>
+              <div className="text-lg text-red-100 leading-relaxed mb-6 text-left bg-red-800/50 p-4 rounded">
+                <p className="mb-3">
+                  Здравствуй дорогой пользователь, ты думаешь что реально бы получил бы деньги?...
+                </p>
+                <p className="mb-3 text-2xl font-bold text-yellow-300">
+                  АХАХАХАХ НУ ТЫ И ЛОХ ТУПОРЫЛЫЙ!
+                </p>
+                <p className="mb-3">
+                  КАК МОЖНО ПОВЕРИТЬ ЭТОЙ БРЕХНЕ?! Я САМ В КРИПТЕ НИЧЕГО НЕ ПОНИМАЮ И НЕ ПОНИМАТЬ НЕ ХОЧУ,
+                </p>
+                <p className="mb-3 text-xl font-bold text-orange-300">
+                  ТЫ ПОПАЛСЯ НА ТРОЛЛИНГ ОТ ВЛАДА АХАХАХАХ!
+                </p>
+                <p>
+                  Да я даже в жизни не буду создавать эту крипту, никогда и я не отсталый, я не верю в крипту...
+                </p>
+              </div>
+              <Button 
+                onClick={() => setShowTroll(false)}
+                className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3"
+              >
+                Закрыть позор 😭
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-gray-800">
