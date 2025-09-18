@@ -72,9 +72,20 @@ const Index = () => {
           <h2 className="text-6xl font-bold mb-6 bg-gradient-to-r from-neon-cyan via-white to-neon-magenta bg-clip-text text-transparent animate-slide-up">
             Новая криптовалюта
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-slide-up">
+          <p className="text-xl text-gray-300 mb-6 max-w-2xl mx-auto animate-slide-up">
             Зарабатывайте деньги за считанные секунды с технологией будущего!
           </p>
+          <div className="bg-gradient-to-r from-neon-cyan/20 to-neon-magenta/20 rounded-lg p-6 mb-8 max-w-3xl mx-auto backdrop-blur-sm border border-neon-cyan/30">
+            <p className="text-2xl font-bold text-neon-cyan mb-4 animate-pulse-neon">
+              Здесь появится твоё будущее!
+            </p>
+            <p className="text-lg text-gray-200 mb-4">
+              Депай деньги и будет всё в масле! NaEbalCoin не обманет вас!
+            </p>
+            <p className="text-sm text-neon-green font-semibold">
+              💎 Гарантированная прибыль • 🚀 Быстрый рост • 💰 Безопасные инвестиции
+            </p>
+          </div>
           <div className="flex justify-center items-center space-x-8 mb-12">
             <div className="text-center">
               <div className="text-4xl font-bold text-neon-cyan">$0.45</div>
