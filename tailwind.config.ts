@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'rubik': ['Rubik', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +64,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				neon: {
+					cyan: '#00FFFF',
+					magenta: '#D946EF',
+					green: '#00FF88',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +92,34 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				'glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px #00FFFF, 0 0 40px #00FFFF, 0 0 60px #00FFFF' 
+					},
+					'50%': { 
+						boxShadow: '0 0 30px #D946EF, 0 0 60px #D946EF, 0 0 90px #D946EF' 
+					},
+				},
+				'pulse-neon': {
+					'0%, 100%': { 
+						textShadow: '0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF' 
+					},
+					'50%': { 
+						textShadow: '0 0 20px #D946EF, 0 0 30px #D946EF, 0 0 40px #D946EF' 
+					},
+				},
+				'slide-up': {
+					from: { transform: 'translateY(100px)', opacity: '0' },
+					to: { transform: 'translateY(0)', opacity: '1' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'glow': 'glow 3s ease-in-out infinite',
+				'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
+				'slide-up': 'slide-up 0.6s ease-out',
 			}
 		}
 	},
